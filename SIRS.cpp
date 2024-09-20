@@ -15,7 +15,7 @@ struct Point
 };
 
 
-void initialize(int* points) {
+void initialize(Point* points) {
     using namespace std;
     default_random_engine generator;
     uniform_real_distribution<int> distribution(1,7);
@@ -33,28 +33,41 @@ void vonneumann(Point* points) {
     for (int i=0; i<N*N; i++){
         if (i%N == 0) {
             points[i].left = points[i+N-1].curr_tau;
+            points[i].right = points[i+1].curr_tau;
         }
-        else points[i].left = points[i-1].curr_tau;
-
-        if (i<N) {
-            points[i].top = points[i + (N-1)*N].curr_tau;
-        }
-        else points[i].top = points[i-N].curr_tau;
-
-        if ((i+1)%N == 0) {
+        else if ((i+1)%N == 0) {
+            points[i].left = points[i-1].curr_tau;
             points[i].right = points[i+1-N].curr_tau;
         }
-        else points[i].right = points[i+1].curr_tau;
-        
-        if (i<N*N && i>=(N*N - N)) {
+        else {
+            points[i].left = points[i-1].curr_tau;
+            points[i].right = points[i+1].curr_tau;
+        }
+    }
+
+    for (int i=0; i<N*N; i++) {
+        if (i<N) {
+            points[i].top = points[i+ (N-1)*N].curr_tau;
+            points[i].bottom = points[i+N].curr_tau;
+        }
+        else if (i<N*N && i>=(N*N - N)) {
+            points[i].top = points[i-N].curr_tau;
             points[i].bottom = points[i - (N-1)*N].curr_tau;
         }
-        else points[i].bottom = points[i-N].curr_tau
+        else {
+            points[i].top = points[i-N].curr_tau;
+            points[i].bottom = points[i+N].curr_tau;
+        }
     }
+}
+
+void update(Point* points) {
+    
 }
 
 
 int main(){
     Point* points = new Point[N];
     initialize(points);
+    vonneumann(points);
 }

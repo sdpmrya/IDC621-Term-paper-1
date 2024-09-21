@@ -1,6 +1,6 @@
 # SIRS model
 
-![alt text](image.png)
+![alt text](pics/image.png)
 
 ## variables
 curr

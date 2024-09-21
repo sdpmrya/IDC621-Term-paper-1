@@ -1,12 +1,12 @@
 # SIRS model
 
-![alt text](image.png)
+![alt text](pics/image.png)
 
 ## variables
 curr
 
 #### Von Neumann neighbourhood is used 
-![alt text](image-2.png)
+![alt text](pics/image-2.png)
 
 ## Functions used:-
 

@@ -81,6 +81,8 @@ void update(Point* points) {  //update happens in next_tau
         }
         else if (points[i].curr_tau == tau_max) points[i].next_tau = 0;
         else points[i].next_tau = points[i].curr_tau + 1;
+
+        //std::cout << points[i].next_tau << "\n";
     }
 }
 
@@ -103,7 +105,8 @@ int main(){
         update(points);
         // print
         for (int j=0; j<N*N; j++) {
-            outFile << points[i].next_tau << " ";
+            outFile << points[i].curr_tau << " ";
+            //std::cout << points[i].next_tau << "\n";
         } outFile << "\n";
         //
         reassign(points);

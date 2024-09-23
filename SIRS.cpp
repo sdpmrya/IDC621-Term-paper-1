@@ -12,6 +12,7 @@ struct Point
     /* data */
     int curr_tau, next_tau;
     int left, top, right, bottom;
+    int no_infected;
 };
 
 
@@ -60,24 +61,23 @@ void vonneumann(Point* points) {
 }
 
 void update(Point* points) {  //update happens in next_tau
-    int no_infected;
     int a,b,c,d;
     for (int i=0; i<N*N; i++) {
         // counting number of infected neighbours
-        no_infected = 0;
+        points[i].no_infected = 0;
         a = points[i].left;
         b = points[i].top;
         c = points[i].right;
         d = points[i].bottom;
-        if (a >=1 && a<=4) no_infected += 1;
-        if (b >=1 && b<=4) no_infected += 1;
-        if (c >=1 && c<=4) no_infected += 1;
-        if (d >=1 && d<=4) no_infected += 1;
+        if (a >=1 && a<=4) points[i].no_infected += 1;
+        if (b >=1 && b<=4) points[i].no_infected += 1;
+        if (c >=1 && c<=4) points[i].no_infected += 1;
+        if (d >=1 && d<=4) points[i].no_infected += 1;
         //
     }
     for (int i; i<N*N; i++) {
         if (points[i].curr_tau == 0) {
-            if (no_infected >= 2) points[i].next_tau = 1;
+            if (points[i].no_infected >= 2) points[i].next_tau = 1;
         }
         else if (points[i].curr_tau == tau_max) points[i].next_tau = 0;
         else points[i].next_tau = points[i].curr_tau + 1;

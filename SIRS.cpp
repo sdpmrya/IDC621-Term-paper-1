@@ -75,7 +75,7 @@ void update(Point* points) {  //update happens in next_tau
         if (d >=1 && d<=4) points[i].no_infected += 1;
         //
     }
-    for (int i; i<N*N; i++) {
+    for (int i=0; i<N*N; i++) {
         if (points[i].curr_tau == 0) {
             if (points[i].no_infected >= 2) points[i].next_tau = 1;
         }
@@ -105,7 +105,7 @@ int main(){
         update(points);
         // print
         for (int j=0; j<N*N; j++) {
-            outFile << points[i].curr_tau << " ";
+            outFile << points[j].curr_tau << " ";
             //std::cout << points[i].next_tau << "\n";
         } outFile << "\n";
         //

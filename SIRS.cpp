@@ -4,8 +4,9 @@
 #include <fstream>
 #include <random>
 
-const int N = 10; //number of cells in one direction
-const int tau_max = 7;
+const int N = 30; //number of cells in one direction
+const int tau_max = 10;
+const int tau_l = 6;
 
 struct Point
 {
@@ -18,14 +19,16 @@ struct Point
 
 void initialize(Point* points) {
     using namespace std;
+    //
+    ifstream my_file("initial_condition_expanding_disease.txt");
+    //
     default_random_engine generator;
     uniform_int_distribution<int> distribution(0,7);
 
     for (int i=0; i<N*N; i++) {
-        points[i].curr_tau = distribution(generator);
+        my_file >> points[i].curr_tau;
+        //points[i].curr_tau = distribution(generator);
     }
-
-    //for (int i=0; i<N*N; i++) cout << points[i].curr_tau;
 }
 
 void vonneumann(Point* points) {
@@ -69,15 +72,15 @@ void update(Point* points) {  //update happens in next_tau
         b = points[i].top;
         c = points[i].right;
         d = points[i].bottom;
-        if (a >=1 && a<=4) points[i].no_infected += 1;
-        if (b >=1 && b<=4) points[i].no_infected += 1;
-        if (c >=1 && c<=4) points[i].no_infected += 1;
-        if (d >=1 && d<=4) points[i].no_infected += 1;
+        if (a >=1 && a<=tau_l) points[i].no_infected += 1;
+        if (b >=1 && b<=tau_l) points[i].no_infected += 1;
+        if (c >=1 && c<=tau_l) points[i].no_infected += 1;
+        if (d >=1 && d<=tau_l) points[i].no_infected += 1;
         //
     }
     for (int i=0; i<N*N; i++) {
         if (points[i].curr_tau == 0) {
-            if (points[i].no_infected >= 2) points[i].next_tau = 1;
+            if (points[i].no_infected >= 1) points[i].next_tau = 1;
         }
         else if (points[i].curr_tau == tau_max) points[i].next_tau = 0;
         else points[i].next_tau = points[i].curr_tau + 1;
@@ -100,7 +103,7 @@ int main(){
 
     std::ofstream outFile("SIRS_data.txt");
 
-    int Total_steps = 10;
+    int Total_steps = 45;
     for (int i=0; i<=Total_steps; i++) {
         update(points);
         // print
@@ -114,4 +117,5 @@ int main(){
     }
     outFile.close();
     return 0;
+    delete[] points;
 }

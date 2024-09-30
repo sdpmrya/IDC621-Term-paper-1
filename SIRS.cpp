@@ -4,9 +4,10 @@
 #include <fstream>
 #include <random>
 
-const int N = 30; //number of cells in one direction
+const int N = 60; //number of cells in one direction
 const int tau_max = 10;
-const int tau_l = 6;
+const int tau_l = 8;
+const int infection_rate = 1.0;  //tunes how aggressive the infection spreads
 
 struct Point
 {
@@ -64,6 +65,11 @@ void vonneumann(Point* points) {
 }
 
 void update(Point* points) {  //update happens in next_tau
+    //
+    using namespace std;
+    default_random_engine generator;
+    uniform_real_distribution<double> distribution(0.0, 1.0);
+
     int a,b,c,d;
     for (int i=0; i<N*N; i++) {
         // counting number of infected neighbours
@@ -80,7 +86,10 @@ void update(Point* points) {  //update happens in next_tau
     }
     for (int i=0; i<N*N; i++) {
         if (points[i].curr_tau == 0) {
-            if (points[i].no_infected >= 1) points[i].next_tau = 1;
+
+            double probability = infection_rate*points[i].no_infected/4.0;
+            if (distribution(generator) < probability) points[i].next_tau = 1;
+            else points[i].next_tau = 0;
         }
         else if (points[i].curr_tau == tau_max) points[i].next_tau = 0;
         else points[i].next_tau = points[i].curr_tau + 1;
@@ -103,7 +112,7 @@ int main(){
 
     std::ofstream outFile("SIRS_data.txt");
 
-    int Total_steps = 45;
+    int Total_steps = 200;
     for (int i=0; i<=Total_steps; i++) {
         update(points);
         // print

@@ -6,7 +6,7 @@
 
 const int N = 60; //number of cells in one direction
 const int tau_max = 10;
-const int tau_l = 8;
+const int tau_l = 5;
 const int infection_rate = 1.0;  //tunes how aggressive the infection spreads
 
 struct Point
@@ -112,7 +112,7 @@ int main(){
 
     std::ofstream outFile("SIRS_data.txt");
 
-    int Total_steps = 200;
+    int Total_steps = 400;
     for (int i=0; i<=Total_steps; i++) {
         update(points);
         // print

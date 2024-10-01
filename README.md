@@ -1,5 +1,13 @@
 # SIRS model
 
+> Primary code is on SIRS.cpp \
+> 'Plotting and analysis.ipynb' has the plots
+
+## Parameters
+- tau_l : The point on the grid is infected when the value of $\tau$ is between 1 and tau_l.
+- tau_max : The point is recovering when the value is between tau_l and tau_max.
+- N : No of grid points in one dimension.
+
 ![alt text](pics/image.png)
 
 0 : susceptible

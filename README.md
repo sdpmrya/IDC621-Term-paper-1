@@ -8,7 +8,7 @@
 - tau_max : The point is recovering when the value is between tau_l and tau_max.
 - N : No of grid points in one dimension.
 
-![alt text](pics/image.png)
+
 
 0 : susceptible
 1-4 : Infected
@@ -18,7 +18,7 @@
 curr
 
 #### Von Neumann neighbourhood is used 
-![alt text](pics/image-2.png)
+
 
 ## Functions used:-
 

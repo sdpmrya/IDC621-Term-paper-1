@@ -4,24 +4,24 @@
 #include <fstream>
 #include <random>
 
-const int N = 60; //number of cells in one direction
-const int tau_max = 10;
-const int tau_l = 5;
+const int N =100;                //number of cells in one direction
+const int tau_max = 10; 
+const int tau_l = 6;             // cell is infected when 0 < tau <= tau_l
 const int infection_rate = 1.0;  //tunes how aggressive the infection spreads
 
-struct Point
+struct Point  // this data structure contains the state of a cell
 {
     /* data */
-    int curr_tau, next_tau;
-    int left, top, right, bottom;
-    int no_infected;
+    int curr_tau, next_tau;       // current tau and tau for the next step
+    int left, top, right, bottom; // stores the tau values around the cell
+    int no_infected;              // number of infected cells in the neighbourhood
 };
 
 
 void initialize(Point* points) {
     using namespace std;
     //
-    ifstream my_file("initial_condition_expanding_disease.txt");
+    ifstream my_file("Initial_conditions_100*100center.txt"); // this file has initial conditions
     //
     default_random_engine generator;
     uniform_int_distribution<int> distribution(0,7);
@@ -32,8 +32,8 @@ void initialize(Point* points) {
     }
 }
 
-void vonneumann(Point* points) {
-    for (int i=0; i<N*N; i++){
+void vonneumann(Point* points) { // updates the left, right, top and bottom data for the cell
+    for (int i=0; i<N*N; i++){   // vonneumann bondary condition used
         if (i%N == 0) {
             points[i].left = points[i+N-1].curr_tau;
             points[i].right = points[i+1].curr_tau;
@@ -110,15 +110,14 @@ int main(){
     initialize(points);
     vonneumann(points);
 
-    std::ofstream outFile("SIRS_data.txt");
+    std::ofstream outFile("SIRS_data.txt"); // this file stroes the results
 
-    int Total_steps = 400;
+    int Total_steps = 400; // no of evolutions
     for (int i=0; i<=Total_steps; i++) {
         update(points);
         // print
         for (int j=0; j<N*N; j++) {
             outFile << points[j].curr_tau << " ";
-            //std::cout << points[i].next_tau << "\n";
         } outFile << "\n";
         //
         reassign(points);

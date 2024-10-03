@@ -10,26 +10,50 @@
 
 
 
-0 : susceptible
-1-4 : Infected
-5-7 : recovering
+## Variation in tau_l:
+Varying the value of tau_l while keeping the initial condiitons and tau_max same. tau_l quantifies the time it takes for an infected person to recover.
 
-## variables
-curr
+- Initial conditions \
+Susceptible cells : 9900 \
+Infected cells : 69 \
+Recovering cells : 31
 
-#### Von Neumann neighbourhood is used 
+> tau_l = 1 
 
+![Alt text](pics/time_evol_tau_l=1.png)
 
-## Functions used:-
+> tau_l = 2 
 
-### Initialization(Point* points)
-assigns random values for the tau in the data. 
+![Alt text](pics/time_evol_tau_l=2.png)
 
-### nonneuman(Point* points)
-updates the left, top, right and bottom 
+> tau_l = 3 
 
-### update(Point* points)
+![Alt text](pics/time_evol_tau_l=3.png)
 
+> tau_l = 4
 
-### main function
-Initialize pointer vector points using new keyword
+![Alt text](pics/time_evol_tau_l=4.png)
+
+> tau_l = 5
+
+![Alt text](pics/time_evol_tau_l=5.png)
+
+> tau_l = 6
+
+![Alt text](pics/time_evol_tau_l=6.png)
+
+> tau_l = 7
+
+![Alt text](pics/time_evol_tau_l=7.png)
+
+> tau_l = 8
+
+![Alt text](pics/time_evol_tau_l=8.png)
+
+> tau_l = 9
+
+![Alt text](pics/time_evol_tau_l=9.png)
+
+### tau_l vs infected cells at equilibrium
+
+The general trend is that at equilibrium, the number of infected cells is increasing. This can be shown from the following plot.

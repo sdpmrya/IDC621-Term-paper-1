@@ -6,7 +6,7 @@
 
 const int N =100;                //number of cells in one direction
 const int tau_max = 10; 
-const int tau_l = 6;             // cell is infected when 0 < tau <= tau_l
+const int tau_l = 9;             // cell is infected when 0 < tau <= tau_l
 const int infection_rate = 1.0;  //tunes how aggressive the infection spreads
 
 struct Point  // this data structure contains the state of a cell

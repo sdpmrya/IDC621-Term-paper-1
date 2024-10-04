@@ -20,40 +20,42 @@ Recovering cells : 31
 
 > tau_l = 1 
 
-![Alt text](pics/time_evol_tau_l=1.png)
+<img src="pics/time_evol_tau_l=1.png" alt="drawing" width="400"/>
 
 > tau_l = 2 
 
-![Alt text](pics/time_evol_tau_l=2.png)
+<img src="pics/time_evol_tau_l=2.png" alt="drawing" width="400"/>
 
 > tau_l = 3 
 
-![Alt text](pics/time_evol_tau_l=3.png)
+<img src="pics/time_evol_tau_l=3.png" alt="drawing" width="400"/>
 
 > tau_l = 4
 
-![Alt text](pics/time_evol_tau_l=4.png)
+<img src="pics/time_evol_tau_l=4.png" alt="drawing" width="400"/>
 
 > tau_l = 5
 
-![Alt text](pics/time_evol_tau_l=5.png)
+<img src="pics/time_evol_tau_l=5.png" alt="drawing" width="400"/>
 
 > tau_l = 6
 
-![Alt text](pics/time_evol_tau_l=6.png)
+<img src="pics/time_evol_tau_l=6.png" alt="drawing" width="400"/>
 
 > tau_l = 7
 
-![Alt text](pics/time_evol_tau_l=7.png)
+<img src="pics/time_evol_tau_l=7.png" alt="drawing" width="400"/>
 
 > tau_l = 8
 
-![Alt text](pics/time_evol_tau_l=8.png)
+<img src="pics/time_evol_tau_l=8.png" alt="drawing" width="400"/>
 
 > tau_l = 9
 
-![Alt text](pics/time_evol_tau_l=9.png)
+<img src="pics/time_evol_tau_l=9.png" alt="drawing" width="400"/>
 
-### tau_l vs infected cells at equilibrium
+### tau_l vs no of cells at equilibrium
 
 The general trend is that at equilibrium, the number of infected cells is increasing. This can be shown from the following plot.
+
+<img src="pics/tau_l_vs_no_of_cells.png" alt="drawing" width="400"/>

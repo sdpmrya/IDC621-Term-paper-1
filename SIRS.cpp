@@ -6,7 +6,7 @@
 
 const int N =100;                //number of cells in one direction
 const int tau_max = 10; 
-const int tau_l = 9;             // cell is infected when 0 < tau <= tau_l
+const int tau_l = 6;             // cell is infected when 0 < tau <= tau_l
 const int infection_rate = 1.0;  //tunes how aggressive the infection spreads
 
 struct Point  // this data structure contains the state of a cell
@@ -21,7 +21,7 @@ struct Point  // this data structure contains the state of a cell
 void initialize(Point* points) {
     using namespace std;
     //
-    ifstream my_file("Initial_conditions_100*100center.txt"); // this file has initial conditions
+    ifstream my_file("custom_initial_conditions_(0.2, 0.6, 0.2).txt"); // this file has initial conditions
     //
     default_random_engine generator;
     uniform_int_distribution<int> distribution(0,7);

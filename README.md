@@ -1,7 +1,10 @@
 # SIRS model
 
+Sudeep Maurya [MS21130]
+
 > Primary code is on SIRS.cpp \
-> 'Plotting and analysis.ipynb' has the plots
+> 'Plotting and analysis.ipynb' is the analysis notebook \
+> 'initial_cond_generator.ipynb' generated initial conditions for different proprtions of cells.
 
 ## Parameters
 - tau_l : The point on the grid is infected when the value of $\tau$ is between 1 and tau_l.
@@ -11,7 +14,8 @@
 
 
 ## Variation in tau_l:
-Varying the value of tau_l while keeping the initial condiitons and tau_max same. tau_l quantifies the time it takes for an infected person to recover.
+Varying the value of tau_l while keeping the initial condiitons and tau_max same. tau_l quantifies the time of infection. \ 
+From the graphs we see that there is a linear relation between number of infected cells at equilibrium and tau_l.
 
 - Initial conditions \
 Susceptible cells : 9900 \
